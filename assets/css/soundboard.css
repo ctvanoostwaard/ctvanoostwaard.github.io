@@ -3,9 +3,10 @@
  */
 
 body {
-	background-image: url(../img/soundboard-bg.jpg);
+	/*background-image: url(../img/soundboard-bg.jpg);*/
+	background-color: steelblue;
 	/*background-size: cover;*/
-	background-repeat: no-repeat;
+	/*background-repeat: no-repeat;*/
 	--base: #ffffff;
 }
 
