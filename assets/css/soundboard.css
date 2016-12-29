@@ -1,0 +1,42 @@
+/**
+ *	Soundboard styles
+ */
+
+body {
+	background-image: url(../img/soundboard-bg.jpg);
+	/*background-size: cover;*/
+	background-repeat: no-repeat;
+	--base: #ffffff;
+}
+
+.keys {
+	list-style-type: none;
+	padding-left: 0;
+	text-align: center;
+	margin: auto 0;
+}
+
+.keys li {
+	display: inline-block;
+	padding: 1rem;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 25%;
+	border: 2px solid #000000;
+	background-color: #282C30;
+	text-align: center;
+	/*color: #2980B9;*/
+	color: var(--base);
+	margin: 0 1rem;
+	transition: all .07s;
+}
+
+.keys li:hover {
+	cursor: pointer;
+}
+
+.keys li.playing {
+	transform: scale(1.1);
+	border-color: #535B63;
+	background-color: #94A2AF;
+}

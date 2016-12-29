@@ -1,1 +1,54 @@
-Hello World
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Soundboard</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link href="assets/css/soundboard.css" rel="stylesheet">
+        <!-- <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Patrick+Hand' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
+    </head>
+    <body>
+        <ul class="keys">
+            <li data-key="65" class="key">
+                <kbd>A</kbd>
+            </li>
+            <li data-key="87" class="key">
+                <kbd>W</kbd>
+            </li>
+        </ul>
+        <audio data-key="65" src="assets/audio/smb_1-up.wav"></audio>
+        <audio data-key="87" src="assets/audio/smb_bowserfalls.wav"></audio>
+        <script>
+
+            function playSound (e) {
+                const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+                const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+                
+                if (!audio) return; // stop de function fromt running al together
+                audio.currentTime = 0; // Rewind to the beginning
+                audio.play(); //Play music clip
+
+                key.classList.add('playing'); // Add 
+            }
+
+            function removeTransition(e) {
+                if (e.propertyName !== 'transform') return; // skip if it's not a transform
+                this.classList.remove('playing');
+            }
+
+            const keys = document.querySelectorAll('.key');
+            keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+            window.addEventListener('keydown', playSound);
+
+        </script>
+
+        <!-- <script src="js/todoApp.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/practice.js"></script> -->
+    </body>
+</html>
