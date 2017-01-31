@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Multi-select checkboxes</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <style>
+            html {
+                box-sizing: border-box;
+                /*font-size: 2rem;*/
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 100;
+                background: wheat;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            *, *:before, *:after {
+                box-sizing: inherit;
+            }
+
+            .inbox {
+                width: 25%;
+                margin: 3rem auto 0 auto;
+                border: 1px solid #f1f1f1;
+                background-color: #ffffff;
+            }
+
+            .item {
+                margin: 0 0 1rem 0;
+            }
+
+            .hl {
+                background-color: goldenrod;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="inbox">
+            <div class="item">
+                <label>
+                    <input type="checkbox">
+                    This is an inbox layout
+                </label>
+            </div>
+            <div class="item">
+                <label>
+                    <input type="checkbox">
+                    You are a winner!
+                </label>
+            </div>
+            <div class="item">
+                <label>
+                    <input type="checkbox">
+                    This is very important...
+                </label>
+            </div>
+            <div class="item">
+                <label>
+                    <input type="checkbox">
+                    10 Things you should not do
+                </label>
+            </div>
+            <div class="item">
+                <label>
+                    <input type="checkbox">
+                    It's me...
+                </label>
+            </div>
+        </div>
+        <script>
+            const checkboxes = document.querySelectorAll('.inbox input[type ="checkbox"]');
+            let lastChecked;
+
+            checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+
+            function handleCheck(e) {
+                // Check if the shift key is down
+                // AND check if they are checking it
+
+                let inBetween = false;
+                if (e.shiftKey && this.checked) {
+
+                    // go ahead do what we please
+                    // loop over every single checkbox
+
+                    checkboxes.forEach(checkbox => {
+                        console.log(checkbox)
+                        if (checkbox === this || checkbox === lastChecked) {
+                            inBetween = !inBetween;
+                            console.log('Starting to check inbetween');
+                        }
+
+                        if (inBetween) {
+                            checkbox.checked = true;
+                            console.log(checkbox.previousSibling);
+                            // checkbox.previousSibling.style.color = 'red';
+                        }
+                    });
+                }
+
+                lastChecked = this;
+            }
+
+            // Since IE does not support forEach, use a traditional for loop instead
+            // for(var i = 0; i < checkboxes.length; i++) {
+
+            //     var checkbox = checkboxes[i];
+            //     checkbox.addEventListener('click', handleCheck);
+            // }
+
+        </script>
+    </body>
+</html>
