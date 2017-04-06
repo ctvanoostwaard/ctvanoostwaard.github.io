@@ -20,6 +20,7 @@
                 padding: 0;
             }
 
+            /* Main nav container: holds the list items; */
             nav {
                 width: 100%;
                 background-color: #ffffff;
@@ -29,13 +30,14 @@
                 position: relative;
             }
 
+            /* Let us reset the list items */
             ul {
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
             }
 
-            /* Main nav */
+            /* Main nav: the main list item is here; */
             nav ul {
                 display: flex;
                 flex-direction: row;
@@ -52,12 +54,13 @@
                 border-left: 1px solid #ffffff;
                 border-right: 1px solid #ffffff;
                 border-bottom: 1px solid #ffffff;
-                transition: all .5s ease;
+                transition: all .2s ease;
                 /*border: 1px solid red;*/
             }
 
             nav ul .is-open-submenu {
                 opacity: 1;
+                transform: translateY(0px);
                 border-left: 1px solid #2c3e50;
                 border-right: 1px solid #2c3e50;
                 border-bottom: 1px solid #2c3e50;
@@ -67,19 +70,16 @@
                 align-self: center; /* Vertical align */
             }
 
-            nav ul li:hover {
-                /*background-color: steelblue;*/
-            }
-
             nav ul li a {
                 text-decoration: none;
                 display: block;
                 color: steelblue;
                 max-width: 150px;
-                padding: 2rem 3rem;                
+                padding: 2rem 3rem;
             }
-            .has-submenu:hover > .submenu {
-                display: block;
+            nav ul li a:hover {
+                background-color: steelblue;
+                color: #ffffff;
             }
         </style>
     </head>
@@ -87,8 +87,8 @@
         <nav id="mynav">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li class="has-submenu">
-                    <a href="#" class="menu-handle">About</a>
+                <li>
+                    <a href="#" class="has-submenu">About</a>
                     <ul class="submenu">
                         <li><a href="#">Clayton</a></li>
                         <li><a href="#">Monica</a></li>
@@ -116,25 +116,13 @@
         function openSubMenu (e) {
             target = e.target;
             let currentDropDown = target;
-            var closestSubmenu = target.nextSibling.nextSibling;
+            var closestSubmenu = target.nextElementSibling;
             const dropDownHandle = target.classList.contains("menu-handle");
-            console.log(dropDownHandle);
+            console.log(closestSubmenu);
 
-            if (dropDownHandle) {
-                console.log("It is the menu handle");
-                closestSubmenu.classList.toggle("is-open-submenu");
-            } else {
-                console.log("It is NOT the menu handle");
-            }   
+            closestSubmenu.classList.toggle("is-open-submenu");
 
             
-
-            // Find closest submenu to open
-
-            // console.log(target.nextSibling.nextSibling);
-
-            // let dropdown = target.lastChild;
-            // console.log(dropdown);
         }
     </script>
 </html>
