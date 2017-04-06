@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Menu</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed" rel="stylesheet">
+        <style>
+            html {
+                background: #bdc3c7;
+                /*background: -webkit-linear-gradient(to top right, #bdc3c7 , #2c3e50);
+                background: linear-gradient(to top right, #bdc3c7 , #2c3e50);*/
+                font-family: 'Fira Sans Condensed', sans-serif;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            nav {
+                width: 100%;
+                background-color: #ffffff;
+                border-bottom: 1px solid #2c3e50;
+                margin: 0;
+                padding: 0;
+                position: relative;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Main nav */
+            nav ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            /* Sub menu */
+            nav ul .submenu {
+                flex-direction: column;
+                position: absolute;
+                transform: translateY(-10px);
+                opacity: 0;
+                background-color: #ffffff;
+                border-left: 1px solid #ffffff;
+                border-right: 1px solid #ffffff;
+                border-bottom: 1px solid #ffffff;
+                transition: all .5s ease;
+                /*border: 1px solid red;*/
+            }
+
+            nav ul .is-open-submenu {
+                opacity: 1;
+                border-left: 1px solid #2c3e50;
+                border-right: 1px solid #2c3e50;
+                border-bottom: 1px solid #2c3e50;
+            }
+
+            nav ul li {
+                align-self: center; /* Vertical align */
+            }
+
+            nav ul li:hover {
+                /*background-color: steelblue;*/
+            }
+
+            nav ul li a {
+                text-decoration: none;
+                display: block;
+                color: steelblue;
+                max-width: 150px;
+                padding: 2rem 3rem;                
+            }
+            .has-submenu:hover > .submenu {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="mynav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li class="has-submenu">
+                    <a href="#" class="menu-handle">About</a>
+                    <ul class="submenu">
+                        <li><a href="#">Clayton</a></li>
+                        <li><a href="#">Monica</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact</a></li>
+                <li class="has-submenu">
+                    <a href="#" class="menu-handle">Login</a>
+                    <ul class="submenu">
+                        <li><a href="#">Secure</a></li>
+                        <li><a href="#">Unsecured</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </body>
+    <script>
+
+        // Find menus with a submenu    
+        const submenu = document.querySelectorAll('.has-submenu');
+
+        // Allow people to interact with the submenu
+        submenu.forEach(submenu => submenu.addEventListener('click', openSubMenu));
+
+        function openSubMenu (e) {
+            target = e.target;
+            let currentDropDown = target;
+            var closestSubmenu = target.nextSibling.nextSibling;
+            const dropDownHandle = target.classList.contains("menu-handle");
+            console.log(dropDownHandle);
+
+            if (dropDownHandle) {
+                console.log("It is the menu handle");
+                closestSubmenu.classList.toggle("is-open-submenu");
+            } else {
+                console.log("It is NOT the menu handle");
+            }   
+
+            
+
+            // Find closest submenu to open
+
+            // console.log(target.nextSibling.nextSibling);
+
+            // let dropdown = target.lastChild;
+            // console.log(dropdown);
+        }
+    </script>
+</html>

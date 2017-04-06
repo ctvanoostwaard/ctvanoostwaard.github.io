@@ -9,7 +9,7 @@
         <style>
             html {
                 box-sizing: border-box;
-                /*font-size: 2rem;*/
+                font-size: .875rem;
                 font-family: 'Open Sans', sans-serif;
                 font-weight: 100;
                 background: wheat;
@@ -24,10 +24,17 @@
             }
 
             .inbox {
-                width: 25%;
+                width: 50%;
                 margin: 3rem auto 0 auto;
                 border: 1px solid #f1f1f1;
                 background-color: #ffffff;
+            }
+            label {
+                display: block;
+            }
+            label.checked {
+              background:#F9F9F9;
+              text-decoration: line-through;
             }
 
             .item {
@@ -85,6 +92,7 @@
                 let inBetween = false;
                 if (e.shiftKey && this.checked) {
 
+
                     // go ahead do what we please
                     // loop over every single checkbox
 
@@ -93,14 +101,24 @@
                         if (checkbox === this || checkbox === lastChecked) {
                             inBetween = !inBetween;
                             console.log('Starting to check inbetween');
+                            console.log(checkbox.parentNode);
                         }
 
                         if (inBetween) {
                             checkbox.checked = true;
-                            console.log(checkbox.previousSibling);
-                            // checkbox.previousSibling.style.color = 'red';
+                            console.log(checkbox.parentNode);
                         }
                     });
+                } else if (this.checked) {
+                    checkboxes.forEach(checkbox => {
+                        if (checkbox === this) {
+                            checkbox.parentNode.classList.add('checked');    
+                        } else {
+                            checkbox.parentNode.classList.remove('checked');
+                        }
+                        
+                    });
+                    
                 }
 
                 lastChecked = this;

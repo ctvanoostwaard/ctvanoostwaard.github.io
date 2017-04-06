@@ -2,34 +2,46 @@
  *	Soundboard styles
  */
 
+html {
+	height: 100%;
+}
+
 body {
-	/*background-image: url(../img/soundboard-bg.jpg);*/
-	background-color: LIGHTSEAGREEN;
-	/*background-size: cover;*/
-	/*background-repeat: no-repeat;*/
+	background: linear-gradient(to left bottom, #EB3349 , #F45C43);
+	height: 100%;
+	margin: 0;
 	--base: #ffffff;
 }
 
 .keys {
 	list-style-type: none;
 	padding-left: 0;
-	text-align: center;
-	margin: auto 0;
+	margin: 3rem auto 0 auto;
+	width: 100%;
+	display: flex;
+	align-items: center;
+  	justify-content: center;
 }
 
 .keys li {
-	display: inline-block;
-	padding: 1rem;
-	width: 1rem;
-	height: 1rem;
-	border-radius: 25%;
-	border: 2px solid #000000;
-	background-color: #282C30;
+	justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 0 0px 1px 0px #fff;
+
+	padding: 3rem;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 5%;
+	background-color: #000;
+	/*border: 1px solid #D6A4A4;*/
 	text-align: center;
-	/*color: #2980B9;*/
 	color: var(--base);
 	margin: 0 1rem;
 	transition: all .07s;
+	font-size: 3rem;
 }
 
 .keys li:hover {
