@@ -10,13 +10,16 @@
             body {
                 position: relative;
             }
-
             svg {
                 width: 30rem;
                 margin: 0 auto;
                 display: block;
             }
 
+            svg * {
+                transform-origin: center; /* or transform-origin: 50% */
+                transform-box: fill-box;
+            }
             .checkmark {
                 transform: scale(2);
                 opacity: 0;
@@ -25,20 +28,18 @@
                 transition: all .5s ease;
                 
             }
-
             .checkmark.reveal {
                 transform: scale(1);
                 opacity: 1;
                 transition-delay: 1.1s;
             }      
-            /*
+            
             .ribbon-shadow,
             .ribbon-accent-thick,
             .ribbon-inner-circle,
             .ribbon-accent-thin {
                 opacity: 0;
             }
-
             .ribbon-outer,
             .ribbon-shadow,
             .ribbon-accent-thick,
@@ -47,36 +48,30 @@
                 transition: all .5s ease;
                 transform-origin: center;
             }
-
             .ribbon-outer.rotate,
             .ribbon-accents.rotate path {
                 opacity: 1;
                 transform: rotate(90deg);
                 transition-delay: 1s;
             }
-
             .ribbon-accents path {
                 opacity: 1;
             }
-
             .lint {
                 opacity: 0;
                 transform: translateY(-65%);
                 transition: all .5s ease;
             }
-
             .lint.slide {
                 opacity: 1;
                 transform: translateY(0%);
                 transition-delay: 1.1s;
             }
-
             .confetti path,
             .confetti circle {
                 transform-origin: center;
                 transition: all .2 ease-out;
             }
-
             .confetti path.drop,
             .confetti circle.drop {
                 animation-name: confettiparty;
@@ -86,22 +81,18 @@
                 animation-fill-mode: forwards;
                 opacity: 0;
             }
-
             @keyframes confettiparty {
                 0% {
                     opacity: 0;
                 }
-
                 50% {
                     transform: scale(2);
                 }
-
                 100% {
                     transform: scale(1);
                     opacity: 1;
                 }
-            }*/
-
+            }
         </style>
     </head>
     <body>
@@ -1336,83 +1327,64 @@ AAAASUVORK5CYII=" transform="matrix(1 0 0 1 901 -395)">
 
 
     <script>
-
         // Find all the elements of the icon
         // we want to animate
-
         var outerRibbon = $('.ribbon-outer');
         var ribbonElements = $('.ribbon-accents');
         var checkMark = $('.checkmark');
         var ribbonLints = $('.lint');
         var confettiStar = $('.confetti path');
         var confettiSpots = $('.confetti circle');
-
         $(document).ready(function() {
-           // outerRibbon.addClass('rotate') ;
-           // ribbonElements.addClass('rotate');
+           outerRibbon.addClass('rotate') ;
+           ribbonElements.addClass('rotate');
            checkMark.addClass('reveal');
-           // ribbonLints.addClass('slide');
-           // confettiStar.addClass('drop');
-           // confettiSpots.addClass('drop');
+           ribbonLints.addClass('slide');
+           confettiStar.addClass('drop');
+           confettiSpots.addClass('drop');
         });
         
-
         // var el = select('.ribbon-outer');
         // var ribbonbg = select('.ribbon-accents');
         // var check = select('.checkmark');
         // var lints = selectAll('.lint');
-
         // var confettiPa = selectAll('.confetti path');
         // var confettiCi = selectAll('.confetti circle');
-
-
         // var select = function(s) {
         //     return document.querySelector(s);
         // }
-
         // var selectAll = function(s) {
         //     return document.querySelectorAll(s);
         // }
-
         // var el = select('.ribbon-outer');
         // var ribbonbg = select('.ribbon-accents');
         // var check = select('.checkmark');
         // var lints = selectAll('.lint');
-
         // var confettiPa = selectAll('.confetti path');
         // var confettiCi = selectAll('.confetti circle');
-
         // document.addEventListener("DOMContentLoaded", function() {
         //     setTimeout(function() {
         //         el.classList.add('rotate')
         //     }, 0);
-
         //     setTimeout(function() {
         //         ribbonbg.classList.add('rotate')
         //     }, 0);
-
         //     setTimeout(function() {
         //         check.classList.add('reveal')
         //     }, 0);
-
         //     setTimeout(function() {
         //         for (i = 0; i < lints.length; i++) {
         //         lints[i].classList.add('slide');
         //     }}, 0);
-
         //     setTimeout(function() {
         //         for (i = 0; i < confettiPa.length; i++) {
         //         confettiPa[i].classList.add('drop');
         //     }}, 0);
-
         //     setTimeout(function() {
         //         for (i = 0; i < confettiCi.length; i++) {
         //         confettiCi[i].classList.add('drop');
         //     }}, 0);
-
         // }, false);
-
-
     </script>
     </body>
 </html>
